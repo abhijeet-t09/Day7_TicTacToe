@@ -5,15 +5,17 @@ public class TicTacToe {
 
     static char[] board;
     static char choice;
-
+    static final int PLAYER_1=1;
+    static final int COMPUTER=2;
+    static int currentPlayer;
+    
     static char chooseLetter(){
         Scanner sc=new Scanner(System.in);
         char letter=sc.next().charAt(0);
         return letter;
     }
 
-    static void showBoard()
-    {
+    static void showBoard() {
         System.out.println(board[1] + " | "
                 + board[2] + " | " + board[3]);
         System.out.println("----------");
@@ -22,6 +24,21 @@ public class TicTacToe {
         System.out.println("----------");
         System.out.println(board[7] + " | "
                 + board[8] + " | " + board[9]);
+    }
+
+    static int Toss(){
+        int n = 0;
+        Random r = new Random();
+        n=1+r.nextInt(2);
+
+        if(n==PLAYER_1) {
+            System.out.println("Player 1 Goes First");
+            return PLAYER_1;
+        }
+        else {
+            System.out.println("Computer Goes First");
+            return COMPUTER;
+        }
     }
 
     public static void main(String[] args) {
@@ -45,6 +62,7 @@ public class TicTacToe {
 
         System.out.println("\nGame Board for TicTacToe: ");
         showBoard();
+        currentPlayer=Toss();
 
     }
 }
